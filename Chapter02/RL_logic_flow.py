@@ -2,7 +2,7 @@
 基于对强化学习最原始的理解, 来构建一个RL流程框架
 env, agent -> action, reward -> new_env, agent
 
-概念封装 和 交互对象封装
+概念封装 和 交互对象封装 // 说实话, 这些方式没有多大的区别, 只要能正确表现出其逻辑流程即可
 """
 import random
 # 上面的demo 是以概念为核心的，action reward observation这几个概念分类到env和agent里面的
@@ -57,7 +57,7 @@ class Agent():
     def step(self, env):
         # 都是从env就收信息，只有中间的action是自己选择的 / 把step放到agent里面是因为是agent的动作推进下一步
         # 把step放到agent里面，是把agent当成一个完整的决策封装单元，而不是单一的策略
-        # 如果把agent当成一个独立的策略部分，那么step可以放到main流程里面，其实是一样的
+        # 如果把agent当成一个独立的策略部分，那么step可以放到main流程里面，其实是一样的, 甚至于放到env里面都没问题
         obs = env.get_observation()
         actions = env.get_actions()
         reward = env.action(random.choice(actions))
